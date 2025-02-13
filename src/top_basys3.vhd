@@ -57,11 +57,11 @@ architecture top_basys3_arch of top_basys3 is
     -- declare the component of your top-level design
 component ripple_adder is
     -- declare any signals you will need	
-   Port ( A : in std_logic;
-          B : in std_logic;
-          Cin : in std_logic ;
-          S : out std_logic;
-          Cout : out std_logic
+   Port ( A : in std_logic_vector (4 downto 1);
+          B : in std_logic_vector (15 downto 12);
+          Cin : in std_logic_vector (0 downto 0);
+          S : out std_logic_vector (3 downto 0);
+          Cout : out std_logic_vector (15 downto 15)
        );
    end component ripple_adder;
 begin
