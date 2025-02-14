@@ -48,7 +48,7 @@ entity top_basys3 is
 		-- Switches
 		sw		:	in  std_logic_vector(8 downto 0);		
 		-- LEDs
-		led	    :	out	std_logic_vector(15 downto 0)
+		led	    :	out	std_logic_vector(15 downto 0) 
 	);
 end top_basys3;
 
@@ -65,21 +65,21 @@ architecture top_basys3_arch of top_basys3 is
             );
         end component ripple_adder;
     -- declare any signals you will need  
-    signal w_add :  std_logic_vector (7 downto 0);
+    signal w_add :  std_logic_vector (8 downto 1);
     signal w_sum : std_logic_vector(3 downto 0);
     signal C_out,C_in : std_logic;
 begin
 	-- PORT MAPS --------------------
 	ripple_adder_uut : ripple_adder port map(
-	A=>w_add(3 downto 0),
-	B=>w_add(7 downto 4),
+	A=>w_add(4 downto 1),
+	B=>w_add(8 downto 5),
 	Cin=>C_in,
 	S=>w_sum,
 	Cout=>C_out
    );
    
-   w_add(3 downto 0)<=sw(4 downto 1);
-   w_add(7 downto 4)<=sw(8 downto 5);
+   w_add(4 downto 1)<=sw(4 downto 1);
+   w_add(8 downto 5)<=sw(8 downto 5);
    C_in<=sw(0);
    led(3 downto 0)<=w_sum;
    led(15)<=C_out;
