@@ -55,7 +55,6 @@ begin
 	       assert (w_sum = x"1" and w_Cout = '0') report "bad with Case 2" severity failure;
 		w_addends <= x"10"; w_Cin <= '0'; wait for 10 ns;
 	       assert (w_sum = x"1" and w_Cout = '0') report "bad with Case 3" severity failure;
-
 		wait; -- wait forever
 	end process;	
 	-----------------------------------------------------	
