@@ -26,7 +26,7 @@ end ripple_adder;
             );
         end component full_adder;
     -- Declare signals here
-    signal w_carry  : STD_LOGIC_VECTOR(2 downto 0); -- for ripple between adders
+    signal w_carry  : STD_LOGIC_VECTOR(3 downto 0); -- for ripple between adders
 begin
 
 -- PORT MAPS --------------------
