@@ -65,26 +65,23 @@ architecture top_basys3_arch of top_basys3 is
             );
         end component ripple_adder;
     -- declare any signals you will need  
-    signal A_in :  std_logic_vector (3 downto 0);
-    signal B_in :  std_logic_vector (3 downto 0);
-    signal C_in : std_logic;
-    signal C_out : std_logic;
-    signal S_out :  std_logic_vector (3 downto 0);
+    signal w_add :  std_logic_vector (7 downto 0);
+    signal w_sum : std_logic_vector(3 downto 0);
+    signal C_out,C_in : std_logic;
 begin
 	-- PORT MAPS --------------------
-	U1: ripple_adder
-	port map(
-	A=>A_in,
-	B=>B_in,
+	ripple_adder_uut : ripple_adder port map(
+	A=>w_add(3 downto 0),
+	B=>w_add(7 downto 4),
 	Cin=>C_in,
-	S=>S_out,
+	S=>w_sum,
 	Cout=>C_out
    );
    
-   A_in<=sw(4 downto 1);
-   B_in<=sw(8 downto 5);
+   w_add(3 downto 0)<=sw(4 downto 1);
+   w_add(7 downto 4)<=sw(8 downto 5);
    C_in<=sw(0);
-   led(3 downto 0)<=S_out;
+   led(3 downto 0)<=w_sum;
    led(15)<=C_out;
 	---------------------------------
 	-- CONCURRENT STATEMENTS --------
